@@ -20,9 +20,3 @@ COPY --chown=steam:steam minqlx-plugins ./minqlx-plugins/
 RUN pip-3.6 install --user -r ./minqlx-plugins/requirements.txt
 COPY --chown=steam:steam entrypoint.sh ./
 ENTRYPOINT ["bash", "entrypoint.sh"]
-
-FROM quakelive-server AS quakelive-ca
-
-EXPOSE 27960/udp
-WORKDIR /home/steam/quakelive
-COPY --chown=steam:steam baseq3-ca/* ./baseq3/

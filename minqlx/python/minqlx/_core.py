@@ -230,15 +230,8 @@ def set_map_subtitles():
     setattr(minqlx, "_map_subtitle1", minqlx.get_configstring(678))
     setattr(minqlx, "_map_subtitle2", minqlx.get_configstring(679))
 
-    cs = minqlx.get_configstring(678)
-    if cs:
-        cs += " - "
-    minqlx.set_configstring(678, cs + "Running minqlx ^6{}^7 with plugins ^6{}^7."
-        .format(minqlx.__version__, minqlx.__plugins_version__))
-    cs = minqlx.get_configstring(679)
-    if cs:
-        cs += " - "
-    minqlx.set_configstring(679, cs + "Check ^6http://github.com/MinoMino/minqlx^7 for more details.")
+    minqlx.set_configstring(678, "^1Rocket^7Curves")
+    minqlx.set_configstring(679, "^3Quake is the future!")
 
 # ====================================================================
 #                              DECORATORS

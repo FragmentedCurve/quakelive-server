@@ -1,0 +1,3 @@
+FROM quakelive-server
+WORKDIR /home/steam/quakelive
+COPY --chown=steam:steam baseq3-ca/* ./baseq3/

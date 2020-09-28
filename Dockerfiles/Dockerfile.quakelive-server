@@ -1,0 +1,28 @@
+FROM centos:8 AS minqlx
+RUN yum -y groupinstall "Development Tools"
+RUN yum -y install python36 python36-devel
+RUN git clone https://github.com/MinoMino/minqlx.git
+WORKDIR /minqlx
+RUN make
+
+FROM centos:8 AS quakelive-server
+RUN useradd -ms /bin/bash steam
+RUN yum -y install glibc.i686 libstdc++.i686 python36 redis
+USER steam
+WORKDIR /home/steam
+RUN curl -sqL "https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz" | tar zxvf -
+RUN ./steamcmd.sh +login anonymous +force_install_dir /home/steam/quakelive +app_update 349090 +quit 
+WORKDIR /home/steam/quakelive
+RUN cp -r ../linux64 ./
+RUN cp -r ../linux32 ./
+COPY --chown=steam:steam --from=minqlx /minqlx/bin/* ./
+COPY --chown=steam:steam minqlx-plugins ./minqlx-plugins/
+RUN pip-3.6 install --user -r ./minqlx-plugins/requirements.txt
+COPY --chown=steam:steam entrypoint.sh ./
+ENTRYPOINT ["bash", "entrypoint.sh"]
+
+FROM quakelive-server AS quakelive-ca
+
+EXPOSE 27960/udp
+WORKDIR /home/steam/quakelive
+COPY --chown=steam:steam baseq3-ca/* ./baseq3/

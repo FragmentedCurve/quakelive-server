@@ -1,7 +1,6 @@
 # specify 1 workshop item id per line, ex:
 # 494372396
 # 441344649
-2234556665 # q3l
 2234665323 # rcsnd
 597920398  # ts_ca1
 850146040  # hydra

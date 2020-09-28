@@ -41,7 +41,3 @@ thedukesgarden|actf
 troubledwaters|actf
 vortexportal|actf
 zen|actf
-q3ctf1|actf
-q3ctf2|actf
-q3ctf3|actf
-q3ctf4|actf

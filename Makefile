@@ -1,6 +1,6 @@
 REPO := fragmentedcurve
 DEPS := quakelive-server
-SERVERS := quakelive-ca quakelive-actf quakelive-overkill
+SERVERS := quakelive-ca quakelive-actf quakelive-overkill quakelive-q3l
 
 .PHONY: all $(SERVERS)
 

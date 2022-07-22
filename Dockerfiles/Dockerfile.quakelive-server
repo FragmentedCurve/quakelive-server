@@ -1,11 +1,11 @@
-FROM centos:8 AS minqlx
+FROM rockylinux:8 AS minqlx
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install python36 python36-devel
 COPY ./minqlx /minqlx
 WORKDIR /minqlx
 RUN make
 
-FROM centos:8 AS quakelive-server
+FROM rockylinux:8 AS quakelive-server
 RUN useradd -ms /bin/bash steam
 RUN yum -y install glibc.i686 libstdc++.i686 python36 redis
 USER steam
